@@ -4,7 +4,6 @@ public class ticTacToeBoard {
     //private vars
     private int[][] board;
     private int turn;
-    private int winner;
 
     //players: 1 and 2
     //
@@ -13,7 +12,6 @@ public class ticTacToeBoard {
     public ticTacToeBoard() {
         board = new int[3][3];
         turn = 0;
-        winner = -1;
     }
 
     //get board
@@ -56,26 +54,40 @@ public class ticTacToeBoard {
 
     //calculate winner and return value of winner
     public int winner() {
-        int overall1 = 0;
-        int overall2 = 0;
-        //check board for three in a row, column, or diagonal
-        //check rows
-        for(int[] r: board) {
-            for (int p : r)
-                //check for three in a row
-                if (p == 1)
-                    overall1++;
-                else if (p == 2)
-                    overall2++;
-            if(overall1 == 3)
-                return 1;
-            else if(overall2 == 3)
-                return 2;
-            else
-                //tie
-                return -1;
+        //loop through rows to find winner with 3 in a row
+        for (int[] ints : board) {
+            if (ints[0] == ints[1] && ints[1] == ints[2]) {
+                if (ints[0] == 1)
+                    return 1;
+                else if (ints[0] == 2)
+                    return 2;
+            }
         }
 
+        //loop through columns to find winner with 3 in a column
+        for (int i = 0; i < board.length; i++) {
+            if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) {
+                if (board[0][i] == 1)
+                    return 1;
+                else if (board[0][i] == 2)
+                    return 2;
+            }
+        }
+
+        //check diagonals
+        if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+            if (board[0][0] == 1)
+                return 1;
+            else if (board[0][0] == 2)
+                return 2;
+        }
+
+
         return -1;
+    }
+
+    //get value at coordinate
+    public int getValue(int x, int y) {
+        return board[x][y];
     }
 }
