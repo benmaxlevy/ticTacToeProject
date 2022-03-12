@@ -1,12 +1,10 @@
-package com.company;
+        package com.company;
 
 public class ticTacToeBoard {
     //private vars
     private int[][] board;
     private int turn;
-
-    //players: 1 and 2
-    //
+    //player 1 and 2: 1 is user, 2 is AI
 
     //constructor
     public ticTacToeBoard() {
@@ -41,10 +39,10 @@ public class ticTacToeBoard {
     //add value to board
     public void addValue(int player, int x, int y) {
         board[x][y] = player;
-        if (turn == 1)
-            turn = 2;
+        if (this.turn == 1)
+            this.turn = 2;
         else
-            turn = 1;
+            this.turn = 1;
     }
 
     //get turn
@@ -62,7 +60,7 @@ public class ticTacToeBoard {
                 else if (ints[0] == 2)
                     return 2;
             }
-        }
+        }   
 
         //loop through columns to find winner with 3 in a column
         for (int i = 0; i < board.length; i++) {
