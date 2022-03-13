@@ -1,4 +1,4 @@
-        package com.company;
+package com.company;
 
 public class ticTacToeBoard {
     //private vars
@@ -87,5 +87,16 @@ public class ticTacToeBoard {
     //get value at coordinate
     public int getValue(int x, int y) {
         return board[x][y];
+    }
+
+    //check if board is filled
+    public boolean isFull() {
+        for (int[] ints : board) {
+            for (int anInt : ints) {
+                if (anInt == 0)
+                    return false;
+            }
+        }
+        return true;
     }
 }
